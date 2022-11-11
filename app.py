@@ -18,3 +18,7 @@ st.write("10 Tasa de homicidios intencionales:")
 
 st.subheader("Reduccion de dimencionalidad (PCA): ")
 st.subheader("Cluster y Kmeans:")
+
+st.image("/prueba.png")
+st.plotly_chart(fig,use_container_widht=True)
+
