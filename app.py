@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 
-pca_3=pd.read_csv("./pca_3")
+pca_3=pd.read_csv("./pca_3.csv")
 
 st.title("Proyecto 12")
 st.write(" En la presente pagina, se presenta una presentacion de un indice de felicidad constriudo a partir de 10 diferentes variables de 60 paises ")
