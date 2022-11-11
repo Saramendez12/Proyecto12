@@ -20,7 +20,7 @@ st.write("10 Tasa de homicidios intencionales:")
 st.subheader("Reduccion de dimensionalidad (Algoritmo usado PCA):")
 st.subheader("Calificación Davies-Boluldin:")
 st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
-Concluya sobre los clústers de manera descriptiva y gráfica.
+st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
 st.subheader("Análisis descriptivo y gráfico")
 st.subheader("Conclusión General")
 st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
