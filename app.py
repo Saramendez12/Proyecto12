@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
+import sklearn.preprocessing 
 from sklearn.preprocessing import StandardScaler
 
 pca_3=pd.read_csv("./pca_3.csv")
