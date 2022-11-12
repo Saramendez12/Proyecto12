@@ -160,7 +160,7 @@ for itera in range(iteraciones):
   for centroide, datos in puntos_centroides.items():
     centroides[centroide] = np.average(np.vstack(datos), axis=0)
 
-  contador += 1""", ,language="python")
+  contador += 1""",language="python")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
 
