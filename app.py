@@ -164,7 +164,8 @@ for itera in range(iteraciones):
   contador += 1""",language="python")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
-
+kmea=kmea.to_numpy()
+st.table(kmea.head())
 pca_3['labels'] = kmea
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
 labels = kmea
