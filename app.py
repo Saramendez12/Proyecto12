@@ -187,10 +187,14 @@ data = [trace]
 fig = go.Figure(data = data, layout = layout)
 fig.show()
 
+st.write("Visualización de la reducción de dimensionalidad por componentes"
+         "principales en 3D Interactiva separados por los kmeans elegidos(k=3)")
 st.plotly_chart(fig,use_container_widht=True)
+st.caption("Grafica interactiva de PCA con los k means presentes")
 
-st.subheader("Análisis descriptivo y gráfico")
 st.subheader("Conclusión General")
+
+
 st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
 
 
