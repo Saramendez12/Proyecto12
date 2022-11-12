@@ -39,9 +39,7 @@ st.write("Para analizar el numero de clusters optimos realizamos el grafico del 
 
 st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
-fig_pickle12 = open('fig_proyecto12.pickle','rb')
-figi = pkl.load(fig_pickle12)
-st.plotly_chart(figi,use_container_widht=True)
+
 st.subheader("Análisis descriptivo y gráfico")
 st.subheader("Conclusión General")
 st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
