@@ -164,12 +164,6 @@ for itera in range(iteraciones):
   contador += 1""",language="python")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
-X = tabla.to_numpy()
-scal = StandardScaler()
-X_scal = scal.fit_transform(tabla)
-pca = PCA(n_components=10)
-X_pca = pca.fit_transform(X_scal)
-
 
 pca_3['labels'] = kmea
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
