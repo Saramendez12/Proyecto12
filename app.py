@@ -161,7 +161,7 @@ for itera in range(iteraciones):
 
   contador += 1""",language="python")
 
-
+st.image("./Imagenes12/Visualización Centroides y Clusters.gif")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
 st.write("Se hizo la elección del algoritmo de clasificación kmeans, este logro agrupar los datos (objetos) en k grupos, para este caso a partir" 
