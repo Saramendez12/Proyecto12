@@ -104,60 +104,50 @@ st.write("Por ultimo la calificación o puntaje de Davies Bouldin es de 1.034 ap
 st.subheader("Algoritmo de Clustering seleccionado K means:")
 st.code("""kmeans = KMeans(n_clusters=3, random_state=777,algorithm='elkan').fit(X_scal)
 pca_3['labels'] = kmeans.labels_
-
+#Elección de los centroides a partir de los k ya elegidos.
 centroides = {}
 k = 3
 for i in range(k):
   centroides[i] = X[np.random.choice(len(X))]
 centroides
-
+#Función para calcular la distancia euclidiana
 def dista_euclidiana(puntos, centroide):
   return np.sqrt(sum((puntos-centroide)**2))
 
 distancias = {}
-
 for i in range(len(X)):
   distancias[i] = []
 
 for pos, dato in enumerate(X):
   for pos_, centroide in centroides.items():
     distancias[pos].append(dista_euclidiana(dato, centroide))
+#Asignación de cada cluster seleccionado (1,2,3) por la mínima distancia.
 puntos_centroides = {}
-
 for i in range(k):
   puntos_centroides[i] = []
-
 for pos, dists in distancias.items():
   puntos_centroides[dists.index(min(dists))].append(X[pos])
-
+#Inicio de la graficación de los centroides con determinados clusters.
 k = 3
 centroides = {}
 iteraciones = 6
 contador = 12
 for i in range(k):
   centroides[i] = X[np.random.choice(len(X))]
-
 for itera in range(iteraciones):
-  #distancias
 
   distancias = {}
-
   for pos, datos in enumerate(X):
     distancias[pos] = []
     for pos_, centroide in centroides.items():
       distancias[pos].append(dista_euclidiana(datos, centroide))
-
-  #asignar cada punto a un centroide por la mínima distancia
-
   puntos_centroides = {}
-
   for i in range(k):
     puntos_centroides[i] = []
 
   for pos_dato, distancias in distancias.items():
     puntos_centroides[distancias.index(min(distancias))].append(X[pos_dato])
 
-  #nuevo centroide
   fig, ax = plt.subplots(1, 1, figsize=(10,6))
   for centroide, datos in centroides.items():
     ax.scatter(np.vstack(puntos_centroides[centroide])[:,0],np.vstack(puntos_centroides[centroide])[:,1])
@@ -166,11 +156,12 @@ for itera in range(iteraciones):
   fig.savefig(f'imagen{contador}.png')
   plt.show()
 
-
   for centroide, datos in puntos_centroides.items():
     centroides[centroide] = np.average(np.vstack(datos), axis=0)
 
   contador += 1""",language="python")
+
+
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
 st.write("Se hizo la elección del algoritmo de clasificación kmeans, este logro agrupar los datos (objetos) en k grupos, para este caso a partir" 
