@@ -32,7 +32,7 @@ pca = PCA(n_components=3)
 X_pca = pca.fit_transform(X_scal)
 
 tabla = tabla.to_numpy()
-#Estandarización del Dataset (tabla) 
+#Estandarización del Dataset (tabla) para hacer más sencillo su uso. 
 l = []
 for i in tabla.T:
   u = i.mean()
@@ -41,40 +41,45 @@ for i in tabla.T:
   l.append(scal)
 
 tabla_scal = np.array(l).T
+#Construcción de las matrices de varianzas y covarianzas que nos da nuestra tabla estandarizada 
 cov_x = np.cov(tabla_scal.T)
 cov_x
+#Uso de la libreria Linalg para matrices y vectores de numpy.
 np.linalg.eig(pd.DataFrame(tabla).corr().to_numpy())
+#Descomposición de la varianza
 val_p, vec_p = linalg.eig(cov_x)
 val_p, vec_p
-
+#Selecciones de 3 componentes a partir de la descomposición
 val_p = val_p[:3]
 vec_p = vec_p[:, :3]
+#Creación de una matriz de proyección
 W = vec_p
 W
+#Proyección de X nuestra tabla estandarizada en  la matriz de proyección
 pca_p = tabla_scal @ W
 pca_p = pd.DataFrame(pca_p, columns=[f'PCA{i}' for i in range(1, pca_p.shape[1] + 1)])
+#Ajuste de nuestra X_scal que nos permite tener el Dataset pca3 para nuestro componentes principales seleccionados.
 scal = StandardScaler()
 tabla_scal = scal.fit_transform(tabla)
 
 pca = PCA(n_components=3)
 tabla_pca = pca.fit_transform(tabla_scal)
-
+# Creación de Grafica 3D no interactiva para visualizar los componentes.
 pca_3 = pd.DataFrame(tabla_pca, columns=['PCA1','PCA2','PCA3'])
 
 z = pca_3['PCA1']
 x = pca_3['PCA2']
 y = pca_3['PCA3']
- 
-# Creating figure
+
 fig = plt.figure(figsize = (10, 7))
 ax = plt.axes(projection ="3d")
- 
-# Creating plot
+
 ax.scatter3D(x, z, y, color = "green")
- 
-# show plot
+
 plt.show()""",language="python")
 
+st.write("Visualización de la reducción de dimensionalidad por componentes"
+         "principales en 3D Interactiva")
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
 trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = 'green', size= 10, line=dict(color= 'black',width = 10)))
 layout = go.Layout(margin=dict(l=0,r=0),scene = Scene,height = 800,width = 800)
