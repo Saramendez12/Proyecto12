@@ -104,29 +104,31 @@ st.write("Por ultimo la calificación o puntaje de Davies Bouldin es de 1.034 ap
 st.subheader("Algoritmo de Clustering seleccionado K means:")
 st.code("""kmeans = KMeans(n_clusters=3, random_state=777,algorithm='elkan').fit(X_scal)
 pca_3['labels'] = kmeans.labels_
+
 #Elección de los centroides a partir de los k ya elegidos.
 centroides = {}
 k = 3
 for i in range(k):
   centroides[i] = X[np.random.choice(len(X))]
 centroides
+
 #Función para calcular la distancia euclidiana
 def dista_euclidiana(puntos, centroide):
   return np.sqrt(sum((puntos-centroide)**2))
-
 distancias = {}
 for i in range(len(X)):
   distancias[i] = []
-
 for pos, dato in enumerate(X):
   for pos_, centroide in centroides.items():
     distancias[pos].append(dista_euclidiana(dato, centroide))
+    
 #Asignación de cada cluster seleccionado (1,2,3) por la mínima distancia.
 puntos_centroides = {}
 for i in range(k):
   puntos_centroides[i] = []
 for pos, dists in distancias.items():
   puntos_centroides[dists.index(min(dists))].append(X[pos])
+  
 #Inicio de la graficación de los centroides con determinados clusters.
 k = 3
 centroides = {}
@@ -135,7 +137,6 @@ contador = 12
 for i in range(k):
   centroides[i] = X[np.random.choice(len(X))]
 for itera in range(iteraciones):
-
   distancias = {}
   for pos, datos in enumerate(X):
     distancias[pos] = []
@@ -144,21 +145,16 @@ for itera in range(iteraciones):
   puntos_centroides = {}
   for i in range(k):
     puntos_centroides[i] = []
-
   for pos_dato, distancias in distancias.items():
     puntos_centroides[distancias.index(min(distancias))].append(X[pos_dato])
-
   fig, ax = plt.subplots(1, 1, figsize=(10,6))
   for centroide, datos in centroides.items():
     ax.scatter(np.vstack(puntos_centroides[centroide])[:,0],np.vstack(puntos_centroides[centroide])[:,1])
     ax.scatter(datos[0],datos[1], marker='x', s=400, color='k')
-  
   fig.savefig(f'imagen{contador}.png')
   plt.show()
-
   for centroide, datos in puntos_centroides.items():
     centroides[centroide] = np.average(np.vstack(datos), axis=0)
-
   contador += 1""",language="python")
 
 st.image("./Imagenes12/Visualización Centroides y Clusters.gif")
@@ -188,9 +184,9 @@ st.plotly_chart(fig,use_container_widht=True)
 st.caption("Grafica interactiva de PCA con los k means presentes")
 
 st.subheader("Conclusión General")
+st.write("Prueba")
 
-
-st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
+st.subheader("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
 
 
 
