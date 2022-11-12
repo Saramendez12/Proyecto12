@@ -24,7 +24,7 @@ st.write("10 Tasa de homicidios intencionales:Son estimaciones de homicidios ile
 
 st.subheader("Reducción de dimensionalidad (Algoritmo usado PCA): Este metodo se realiza a través de una descomposición de la varianza")
 st.write(" Para hacer uso de este algoritmo hicimos el siguiente paso a paso")
-st.write("Estandarización del dataset-----"
+st.write("Estandarización del dataset-----")
 
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
 trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = 'green', size= 10, line=dict(color= 'black',width = 10)))
