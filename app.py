@@ -89,15 +89,20 @@ fig.show()
 st.plotly_chart(fig,use_container_widht=True)
 st.caption("Grafica interactiva de PCA")
 
-st.subheader("Calificación Davies-Boluldin:")
+st.write("Para poder graficar y ver como se explica la varianza a traves de los componentes principales seleccionados, realizamos a partir del pca_3 (dataframe de los PCA)"
+          "la creación de la varianza explicada y acumulada, en el cual se ve de forma clara que el numero de componentes elegido (3) es el que puede de mejor manera"
+          "explicar la varianza")
+st.image("./Imagenes12/VAR.png")
+
+st.subheader("Calificación Davies-Bouldin:")
 st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10. En este se busca identificar" 
 "la cantidad optima de clusters que minimizen la puntación de Davies Bouldin. A pesar de en que este grafico las medidas no se llevan mucha"
 "diferencia solo de 1 en 1 , se ve claramente que el valor minimo es 3, por lo tanto se concluye que la puntuación de Davies Bouldin se minimiza"
          "con 3 grupos o clusters y se puede considera este k means. ")
-st.write("AQUI AÑADIR EL CODITOOOOOOOO")
+st.image("./Imagenes12/DB.png")
 st.write("Por ultimo la calificación o puntaje de Davies Bouldin es de 1.034 aproximadamente el cual se consigue con el número de grupos ya elegido.")
 
-st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
+st.subheader("Algoritmo de Clustering seleccionado K means:")
 st.code("""kmeans = KMeans(n_clusters=3, random_state=777,algorithm='elkan').fit(X_scal)
 pca_3['labels'] = kmeans.labels_
 
