@@ -33,7 +33,7 @@ data = [trace]
 fig = go.Figure(data = data, layout = layout)
 fig.show()
 st.plotly_chart(fig,use_container_widht=True)
-
+st.caption("Grafica interactiva de PCA")
 st.subheader("Calificación Davies-Boluldin:")
 st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10. En este se busca identificar la cantidad optima de clusters que minimizen la puntación de Davies Bouldin. A pesar de en que este grafico las medidas no se llevan mucha diferencia solo de 1 en 1 , se ve claramente que el valor minimo es 3, por lo tanto se concluye que la puntuación de Davies Bouldin se minimiza con 3 grupos o clusters y se puede considera este k means. ")
 st.write("AQUI AÑADIR EL CODITOOOOOOOO")
@@ -92,7 +92,75 @@ ax.scatter3D(x, z, y, color = "green")
 plt.show()""",language="python")
              
 st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
+st.code("""kmeans = KMeans(n_clusters=3, random_state=777,algorithm='elkan').fit(X_scal)
+pca_3['labels'] = kmeans.labels_
 
+centroides = {}
+k = 3
+for i in range(k):
+  centroides[i] = X[np.random.choice(len(X))]
+centroides
+
+def dista_euclidiana(puntos, centroide):
+  return np.sqrt(sum((puntos-centroide)**2))
+
+distancias = {}
+
+for i in range(len(X)):
+  distancias[i] = []
+
+for pos, dato in enumerate(X):
+  for pos_, centroide in centroides.items():
+    distancias[pos].append(dista_euclidiana(dato, centroide))
+puntos_centroides = {}
+
+for i in range(k):
+  puntos_centroides[i] = []
+
+for pos, dists in distancias.items():
+  puntos_centroides[dists.index(min(dists))].append(X[pos])
+
+k = 3
+centroides = {}
+iteraciones = 6
+contador = 12
+for i in range(k):
+  centroides[i] = X[np.random.choice(len(X))]
+
+for itera in range(iteraciones):
+  #distancias
+
+  distancias = {}
+
+  for pos, datos in enumerate(X):
+    distancias[pos] = []
+    for pos_, centroide in centroides.items():
+      distancias[pos].append(dista_euclidiana(datos, centroide))
+
+  #asignar cada punto a un centroide por la mínima distancia
+
+  puntos_centroides = {}
+
+  for i in range(k):
+    puntos_centroides[i] = []
+
+  for pos_dato, distancias in distancias.items():
+    puntos_centroides[distancias.index(min(distancias))].append(X[pos_dato])
+
+  #nuevo centroide
+  fig, ax = plt.subplots(1, 1, figsize=(10,6))
+  for centroide, datos in centroides.items():
+    ax.scatter(np.vstack(puntos_centroides[centroide])[:,0],np.vstack(puntos_centroides[centroide])[:,1])
+    ax.scatter(datos[0],datos[1], marker='x', s=400, color='k')
+  
+  fig.savefig(f'imagen{contador}.png')
+  plt.show()
+
+
+  for centroide, datos in puntos_centroides.items():
+    centroides[centroide] = np.average(np.vstack(datos), axis=0)
+
+  contador += 1""", ,language="python")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
 
