@@ -46,5 +46,54 @@ st.subheader("Análisis descriptivo y gráfico")
 st.subheader("Conclusión General")
 st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
 
+st.code(""" X = tabla.to_numpy()
+scal = StandardScaler()
+X_scal = scal.fit_transform(tabla)
 
+pca = PCA(n_components=3)
+X_pca = pca.fit_transform(X_scal)
+
+tabla = tabla.to_numpy()
+#Estandarización del Dataset (tabla) 
+l = []
+for i in tabla.T:
+  u = i.mean()
+  s = i.std()
+  scal = (i - u) / s
+  l.append(scal)
+
+tabla_scal = np.array(l).T
+cov_x = np.cov(tabla_scal.T)
+cov_x
+np.linalg.eig(pd.DataFrame(tabla).corr().to_numpy())
+val_p, vec_p = linalg.eig(cov_x)
+val_p, vec_p
+
+val_p = val_p[:3]
+vec_p = vec_p[:, :3]
+W = vec_p
+W
+pca_p = tabla_scal @ W
+pca_p = pd.DataFrame(pca_p, columns=[f'PCA{i}' for i in range(1, pca_p.shape[1] + 1)])
+scal = StandardScaler()
+tabla_scal = scal.fit_transform(tabla)
+
+pca = PCA(n_components=3)
+tabla_pca = pca.fit_transform(tabla_scal)
+
+pca_3 = pd.DataFrame(tabla_pca, columns=['PCA1','PCA2','PCA3'])
+
+z = pca_3['PCA1']
+x = pca_3['PCA2']
+y = pca_3['PCA3']
+ 
+# Creating figure
+fig = plt.figure(figsize = (10, 7))
+ax = plt.axes(projection ="3d")
+ 
+# Creating plot
+ax.scatter3D(x, z, y, color = "green")
+ 
+# show plot
+plt.show()""",language="python")
 
