@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
-import sklearn.preprocessing 
-from sklearn.preprocessing import StandardScaler
+
 
 pca_3=pd.read_csv("./pca_3.csv")
 tabla=pd.read_csv("./tabla.csv")
@@ -29,6 +28,8 @@ st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
 st.subheader("Análisis descriptivo y gráfico")
 st.subheader("Conclusión General")
 st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
+
+
 
 X = tabla.to_numpy()
 scal = StandardScaler()
