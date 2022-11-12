@@ -35,7 +35,9 @@ fig.show()
 st.plotly_chart(fig,use_container_widht=True)
 
 st.subheader("Calificación Davies-Boluldin:")
-st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10.Para el cual ")
+st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10. En este se busca identificar la cantidad optima de clusters que minimizen la puntación de Davies Bouldin. A pesar de en que este grafico las medidas no se llevan mucha diferencia solo de 1 en 1 , se ve claramente que el valor minimo es 3, por lo tanto se concluye que la puntuación de Davies Bouldin se minimiza con 3 grupos o clusters y se puede considera este k means. ")
+st.write("AQUI AÑADIR EL CODITOOOOOOOO")
+st.write("Por ultimo la calificación o puntaje de Davies Bouldin es de 1.034 aproximadamente el cual se consigue con el número de grupos ya elegido.")
 
 st.subheader("Algoritmo de reducción de dimensionalidad seleccionado PCA:")
 st.code(""" X = tabla.to_numpy()
