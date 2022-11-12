@@ -29,9 +29,7 @@ st.subheader("Análisis descriptivo y gráfico")
 st.subheader("Conclusión General")
 st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
 
-
-
-
+Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
 trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = 'green', size= 10, line=dict(color= 'black',width = 10)))
 layout = go.Layout(margin=dict(l=0,r=0),scene = Scene,height = 800,width = 800)
 data = [trace]
