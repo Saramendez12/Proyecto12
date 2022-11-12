@@ -35,7 +35,7 @@ st.plotly_chart(fig,use_container_widht=True)
 
 st.subheader("Calificación Davies-Boluldin:")
 st.write("aaaaaaa")
-st.image("./")
+
 st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
 fig_pickle12 = open('fig_proyecto12.pickle','rb')
