@@ -23,23 +23,7 @@ st.write("9 Poblacion mayor a los 65 años:Porcentaje de la población total que
 st.write("10 Tasa de homicidios intencionales:Son estimaciones de homicidios ilegales infligidos")
 
 st.subheader("Reducción de dimensionalidad (Algoritmo usado PCA): Este metodo se realiza a través de una descomposición de la varianza")
-st.write(" Para hacer uso de este algoritmo hicimos el siguiente paso a paso")
-st.write("Estandarización del dataset-----")
 
-Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
-trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = 'green', size= 10, line=dict(color= 'black',width = 10)))
-layout = go.Layout(margin=dict(l=0,r=0),scene = Scene,height = 800,width = 800)
-data = [trace]
-fig = go.Figure(data = data, layout = layout)
-fig.show()
-st.plotly_chart(fig,use_container_widht=True)
-st.caption("Grafica interactiva de PCA")
-st.subheader("Calificación Davies-Boluldin:")
-st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10. En este se busca identificar la cantidad optima de clusters que minimizen la puntación de Davies Bouldin. A pesar de en que este grafico las medidas no se llevan mucha diferencia solo de 1 en 1 , se ve claramente que el valor minimo es 3, por lo tanto se concluye que la puntuación de Davies Bouldin se minimiza con 3 grupos o clusters y se puede considera este k means. ")
-st.write("AQUI AÑADIR EL CODITOOOOOOOO")
-st.write("Por ultimo la calificación o puntaje de Davies Bouldin es de 1.034 aproximadamente el cual se consigue con el número de grupos ya elegido.")
-
-st.subheader("Algoritmo de reducción de dimensionalidad seleccionado PCA:")
 st.code(""" X = tabla.to_numpy()
 scal = StandardScaler()
 X_scal = scal.fit_transform(tabla)
@@ -90,7 +74,24 @@ ax.scatter3D(x, z, y, color = "green")
  
 # show plot
 plt.show()""",language="python")
-             
+
+Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
+trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = 'green', size= 10, line=dict(color= 'black',width = 10)))
+layout = go.Layout(margin=dict(l=0,r=0),scene = Scene,height = 800,width = 800)
+data = [trace]
+fig = go.Figure(data = data, layout = layout)
+fig.show()
+st.plotly_chart(fig,use_container_widht=True)
+st.caption("Grafica interactiva de PCA")
+
+st.subheader("Calificación Davies-Boluldin:")
+st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10. En este se busca identificar" 
+"la cantidad optima de clusters que minimizen la puntación de Davies Bouldin. A pesar de en que este grafico las medidas no se llevan mucha"
+"diferencia solo de 1 en 1 , se ve claramente que el valor minimo es 3, por lo tanto se concluye que la puntuación de Davies Bouldin se minimiza"
+         "con 3 grupos o clusters y se puede considera este k means. ")
+st.write("AQUI AÑADIR EL CODITOOOOOOOO")
+st.write("Por ultimo la calificación o puntaje de Davies Bouldin es de 1.034 aproximadamente el cual se consigue con el número de grupos ya elegido.")
+
 st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
 st.code("""kmeans = KMeans(n_clusters=3, random_state=777,algorithm='elkan').fit(X_scal)
 pca_3['labels'] = kmeans.labels_
@@ -163,13 +164,14 @@ for itera in range(iteraciones):
   contador += 1""",language="python")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
-st.write("Se hizo la elección del algoritmo de clasificación kmeans, este logro agrupar los datos (objetos) en k grupos para este caso a partir" 
-"del puntaje de Davies Boudin se tomo 3 grupos basandose así en sus caractersticas en comun. El agrupando se realizo a partir de la formula que" 
-"nos permitia minimizar la sumatoria de las distancias(euclinianas) y los centroides dentro de los k." 
-"Para poder ver de forma grafica el movimiento de los objetos y ubicar los centroides que recojian mayor información a aprtir de las distancias," 
-"se realizo 6 interaciones a traves de nuestros datos y los k=3.Se conclute por lo tanto que graficamente los centroides se ubican en las distancias"
-"más cercanas a los grupos, pero que dentro de almenos un grupo el centroide tiene distancias muy alejadas con objetos(datos) del grupo como sucede" 
+st.write("Se hizo la elección del algoritmo de clasificación kmeans, este logro agrupar los datos (objetos) en k grupos, para este caso a partir" 
+"del puntaje de Davies Boudin se tomo 3 grupos basandose así en sus caractersticas en común. El agrupamiento se realizo a partir de la formula que" 
+"nos permitia minimizar la sumatoria de las distancias(euclidianas) y los centroides dentro de los k." 
+"Para poder ver de forma grafica el movimiento de los objetos(datos) y ubicar los centroides que recojian la mayor información a aprtir de las distancias," 
+"se realizo 6 interaciones, a traves de nuestros datos (Tabla o X) y los k=3.Se concluye por lo tanto que graficamente los centroides se ubican en las distancias"
+"más cercanas a los grupos, pero que dentro de almenos un grupo el centroide tiene distancias muy alejadas con o de los objetos(datos) del grupo como sucede" 
 "con los dos datos atipicos que rozan el punto 30.")
+
 kmean=kmea.to_numpy()
 pca_3['labels'] = kmean
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
