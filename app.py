@@ -7,6 +7,7 @@ import plotly.graph_objs as go
 
 pca_3=pd.read_csv("./pca_3.csv")
 tabla=pd.read_csv("./tabla.csv")
+kmea=pd.read_csv("./kmea.csv")
 
 st.title("Proyecto 12")
 st.write("En la presente pagina, se realiza el despliegue del proyecto que buscaba construir un dataset con variables extraidas de la API del Banco Mundial que puedan explicar la felicidad de un país a partir de 10 diferentes variables de 60 paises,para el año 2018")
@@ -169,10 +170,10 @@ X_scal = scal.fit_transform(tabla)
 pca = PCA(n_components=10)
 X_pca = pca.fit_transform(X_scal)
 
-kmeans = KMeans(n_clusters=3, random_state=777,algorithm='elkan').fit(X_scal)
-pca_3['labels'] = kmeans.labels_
+
+pca_3['labels'] = kmea
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
-labels = kmeans.labels_
+labels = kmea
 trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = labels, size= 10, line=dict(color= 'black',width = 10)))
 layout = go.Layout(margin=dict(l=0,r=0),scene = Scene,height = 800,width = 800)
 data = [trace]
