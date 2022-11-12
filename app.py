@@ -3,14 +3,14 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 
-
 pca_3=pd.read_csv("./pca_3.csv")
 tabla=pd.read_csv("./tabla.csv")
 kmea=pd.read_csv("./kmea.csv")
 
 st.title("Proyecto 12")
-st.write("En la presente pagina, se realiza el despliegue del proyecto que buscaba construir un dataset con variables extraidas de la API del Banco Mundial que puedan explicar la felicidad de un país a partir de 10 diferentes variables de 60 paises,para el año 2018")
-st.subheader("EXPLICACIÓN VARIABLES USADAS")
+st.write("En la presente pagina, se realiza el despliegue del proyecto que buscaba construir un dataset con variables extraidas de la API del Banco Mundial" 
+"que puedan explicar la felicidad de un país a partir de 10 diferentes variables de 60 paises,para el año 2018")
+st.subheader("Explicación de variables usadas")
 st.write("1 Inflación, precios al consumidor (% anual):Cambio porcentual anual en el costo promedio de adquirir una canasta de bienes y servicios")
 st.write("2 Indice de Desarrollo Humano:Calcula las contribuciones de la salud y la educación a la productividad del trabajador. El puntaje del índice varía de 0 a 1")
 st.write("3 PIB per capita:Es el producto interno bruto dividido por la población a mitad de año.")
