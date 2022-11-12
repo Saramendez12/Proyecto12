@@ -37,13 +37,7 @@ st.plotly_chart(fig,use_container_widht=True)
 st.subheader("Calificación Davies-Boluldin:")
 st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10.Para el cual ")
 
-st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
-st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
-
-st.subheader("Análisis descriptivo y gráfico")
-st.subheader("Conclusión General")
-st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
-
+st.subheader("Algoritmo de reducción de dimensionalidad seleccionado PCA:)
 st.code(""" X = tabla.to_numpy()
 scal = StandardScaler()
 X_scal = scal.fit_transform(tabla)
@@ -94,4 +88,15 @@ ax.scatter3D(x, z, y, color = "green")
  
 # show plot
 plt.show()""",language="python")
+             
+st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
+
+
+st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
+
+st.subheader("Análisis descriptivo y gráfico")
+st.subheader("Conclusión General")
+st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
+
+
 
