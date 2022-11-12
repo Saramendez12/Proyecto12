@@ -8,8 +8,8 @@ tabla=pd.read_csv("./tabla.csv")
 kmea=pd.read_csv("./kmea.csv")
 
 st.title("Proyecto 12")
-st.write("En la presente pagina, se realiza el despliegue del proyecto que buscaba construir un dataset con variables extraidas de la API del Banco Mundial" 
-"que puedan explicar la felicidad de un país a partir de 10 diferentes variables de 60 paises,para el año 2018")
+st.write("En la presente pagina, se realiza el despliegue del proyecto que buscaba construir un dataset con variables extraidas de la API del Banco Mundial " 
+ " que puedan explicar la felicidad de un país a partir de 10 diferentes variables de 60 paises,para el año 2018")
 st.subheader("Explicación de variables usadas")
 st.write("1 Inflación, precios al consumidor (% anual):Cambio porcentual anual en el costo promedio de adquirir una canasta de bienes y servicios")
 st.write("2 Indice de Desarrollo Humano:Calcula las contribuciones de la salud y la educación a la productividad del trabajador. El puntaje del índice varía de 0 a 1")
@@ -78,8 +78,8 @@ ax.scatter3D(x, z, y, color = "green")
 
 plt.show()""",language="python")
 
-st.write("Visualización de la reducción de dimensionalidad por componentes"
-         "principales en 3D Interactiva")
+st.write(" Visualización de la reducción de dimensionalidad por componentes "
+         " principales en 3D Interactiva ")
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
 trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = 'green', size= 10, line=dict(color= 'black',width = 10)))
 layout = go.Layout(margin=dict(l=0,r=0),scene = Scene,height = 800,width = 800)
@@ -87,17 +87,17 @@ data = [trace]
 fig = go.Figure(data = data, layout = layout)
 fig.show()
 st.plotly_chart(fig,use_container_widht=True)
-st.caption("Grafica interactiva de PCA")
+st.caption(" Grafica interactiva de PCA ")
 
-st.write("Para poder graficar y ver como se explica la varianza a traves de los componentes principales seleccionados, realizamos a partir del pca_3 (dataframe de los PCA)"
-          "la creación de la varianza explicada y acumulada, en el cual se ve de forma clara que el numero de componentes elegido (3) es el que puede de mejor manera explicar la varianza")
+st.write(" Para poder graficar y ver como se explica la varianza a traves de los componentes principales seleccionados, realizamos a partir del pca_3 (dataframe de los PCA) "
+          " la creación de la varianza explicada y acumulada, en el cual se ve de forma clara que el numero de componentes elegido (3) es el que puede de mejor manera explicar la varianza ")
 st.image("./Imagenes12/VAR.PNG")
 
 st.subheader("Calificación Davies-Bouldin:")
-st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10. En este se busca identificar" 
-"la cantidad optima de clusters que minimizen la puntación de Davies Bouldin. A pesar de en que este grafico las medidas no se llevan mucha"
-"diferencia solo de 1 en 1 , se ve claramente que el valor minimo es 3, por lo tanto se concluye que la puntuación de Davies Bouldin se minimiza"
-         "con 3 grupos o clusters y se puede considera este k means. ")
+st.write(" Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10. En este se busca identificar " 
+" la cantidad optima de clusters que minimizen la puntación de Davies Bouldin. A pesar de en que este grafico las medidas no se llevan mucha "
+" diferencia solo de 1 en 1 , se ve claramente que el valor minimo es 3, por lo tanto se concluye que la puntuación de Davies Bouldin se minimiza "
+         " con 3 grupos o clusters y se puede considera este k means. ")
 st.image("./Imagenes12/DB.PNG")
 st.write("Por ultimo la calificación o puntaje de Davies Bouldin es de 1.034 aproximadamente el cual se consigue con el número de grupos ya elegido.")
 
@@ -160,13 +160,13 @@ for itera in range(iteraciones):
 st.image("./Imagenes12/Visualización Centroides y Clusters.gif")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
-st.write("Se hizo la elección del algoritmo de clasificación kmeans, este logro agrupar los datos (objetos) en k grupos, para este caso a partir" 
-"del puntaje de Davies Boudin se tomo 3 grupos basandose así en sus caractersticas en común. El agrupamiento se realizo a partir de la formula que" 
-"nos permitia minimizar la sumatoria de las distancias(euclidianas) y los centroides dentro de los k." 
-"Para poder ver de forma grafica el movimiento de los objetos(datos) y ubicar los centroides que recojian la mayor información a aprtir de las distancias," 
-"se realizo 6 interaciones, a traves de nuestros datos (Tabla o X) y los k=3.Se concluye por lo tanto que graficamente los centroides se ubican en las distancias"
-"más cercanas a los grupos, pero que dentro de almenos un grupo el centroide tiene distancias muy alejadas con o de los objetos(datos) del grupo como sucede" 
-"con los dos datos atipicos que rozan el punto 30.")
+st.write(" Se hizo la elección del algoritmo de clasificación kmeans, este logro agrupar los datos (objetos) en k grupos, para este caso a partir " 
+" del puntaje de Davies Boudin se tomo 3 grupos basandose así en sus caractersticas en común. El agrupamiento se realizo a partir de la formula que " 
+" nos permitia minimizar la sumatoria de las distancias(euclidianas) y los centroides dentro de los k. " 
+" Para poder ver de forma grafica el movimiento de los objetos(datos) y ubicar los centroides que recojian la mayor información a aprtir de las distancias, " 
+" se realizo 6 interaciones, a traves de nuestros datos (Tabla o X) y los k=3.Se concluye por lo tanto que graficamente los centroides se ubican en las distancias "
+" más cercanas a los grupos, pero que dentro de almenos un grupo el centroide tiene distancias muy alejadas con o de los objetos(datos) del grupo como sucede " 
+" con los dos datos atipicos que rozan el punto 30.")
 
 kmean=kmea.to_numpy()
 pca_3['labels'] = kmean
@@ -184,11 +184,11 @@ st.plotly_chart(fig,use_container_widht=True)
 st.caption("Grafica interactiva de PCA con los k means presentes")
 
 st.subheader("Conclusión General")
-st.write("Se puede concluir primeramente que el algoritmo de componentes principales redujo nuestra dimensionalidad de variables de 10 a 3, mostrando así un buen resultado"
-         "que se aprecia visualmente por los graficos, así mismo se puede concluir y analizar que a traves del algoritmo de agrupamiento K means, se agrupo en 3 grupos"
-         "despues de poner a prueba el puntaje de Davies - Bouldin, a partir de este algoritmo se pudo evaluar la agrupación de los componentes y como estos podrían"
-         "explicar de una forma más sencilla las variables. Visualmente es más posible ver que en cuanto a si buscamos explicar el indice de felicidad creado con las variables"
-         "se ve que la mayoria de datos estan en forma agrupada al lado izquierdo y el lado derecho cuenta con uno u otro dato un poco más alejado.")
+st.write(" Se puede concluir primeramente que el algoritmo de componentes principales redujo nuestra dimensionalidad de variables de 10 a 3, mostrando así un buen resultado "
+         " que se aprecia visualmente por los graficos, así mismo se puede concluir y analizar que a traves del algoritmo de agrupamiento K means, se agrupo en 3 grupos "
+         " despues de poner a prueba el puntaje de Davies - Bouldin, a partir de este algoritmo se pudo evaluar la agrupación de los componentes y como estos podrían "
+         " explicar de una forma más sencilla las variables. Visualmente es más posible ver que en cuanto a si buscamos explicar el indice de felicidad creado con las variables "
+         " se ve que la mayoria de datos estan en forma agrupada al lado izquierdo y el lado derecho cuenta con uno u otro dato un poco más alejado. ")
 
 st.subheader("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
 
