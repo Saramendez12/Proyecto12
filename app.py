@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import pickle as pkl
 import plotly.graph_objs as go
 
 
@@ -37,6 +38,9 @@ st.write("aaaaaaa")
 st.image("./")
 st.subheader("Algoritmo de Clustering seleccionado Kmeans:")
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
+fig_pickle12 = open('fig_proyecto12.pickle','rb')
+fig = pkl.load(fig_pickle12)
+print(fig)
 st.subheader("Análisis descriptivo y gráfico")
 st.subheader("Conclusión General")
 st.write("[Link al Notebook](https://colab.research.google.com/drive/115jkwsUACKRFmJAgcehE8PxzRzFha0Y1?usp=sharing)")
