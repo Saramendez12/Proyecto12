@@ -37,7 +37,7 @@ st.plotly_chart(fig,use_container_widht=True)
 st.subheader("Calificación Davies-Boluldin:")
 st.write("Para analizar el numero de clusters optimos realizamos el grafico del codo, con un rango de 2 a 10.Para el cual ")
 
-st.subheader("Algoritmo de reducción de dimensionalidad seleccionado PCA:)
+st.subheader("Algoritmo de reducción de dimensionalidad seleccionado PCA:")
 st.code(""" X = tabla.to_numpy()
 scal = StandardScaler()
 X_scal = scal.fit_transform(tabla)
