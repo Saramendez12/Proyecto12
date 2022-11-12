@@ -163,6 +163,13 @@ for itera in range(iteraciones):
   contador += 1""",language="python")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
+st.write("Se hizo la elección del algoritmo de clasificación kmeans, este logro agrupar los datos (objetos) en k grupos para este caso a partir 
+"del puntaje de Davies Boudin se tomo 3 grupos basandose así en sus caractersticas en comun. El agrupando se realizo a partir de la formula que 
+"nos permitia minimizar la sumatoria de las distancias(euclinianas) y los centroides dentro de los k. 
+"Para poder ver de forma grafica el movimiento de los objetos y ubicar los centroides que recojian mayor información a aprtir de las distancias, 
+"se realizo 6 interaciones a traves de nuestros datos y los k=3.Se conclute por lo tanto que graficamente los centroides se ubican en las distancias
+"más cercanas a los grupos, pero que dentro de almenos un grupo el centroide tiene distancias muy alejadas con objetos(datos) del grupo como sucede 
+"con los dos datos atipicos que rozan el punto 30.")
 kmean=kmea.to_numpy()
 pca_3['labels'] = kmean
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
