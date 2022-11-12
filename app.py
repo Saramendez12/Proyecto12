@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle as pkl
 import plotly.graph_objs as go
 
 
@@ -164,11 +163,10 @@ for itera in range(iteraciones):
   contador += 1""",language="python")
 
 st.subheader("Concluya sobre los clústers de manera descriptiva y gráfica.")
-kmea=kmea.to_numpy()
-st.table(kmea.head())
-pca_3['labels'] = kmea
+kmean=kmea.to_numpy()
+pca_3['labels'] = kmean
 Scene = dict(xaxis = dict(title  = 'PCA1'),yaxis = dict(title  = 'PCA2'),zaxis = dict(title  = 'PCA3'))
-labels = kmea
+labels = kmean
 trace = go.Scatter3d(x=pca_3['PCA1'], y=pca_3['PCA2'], z=pca_3['PCA3'], mode='markers',marker=dict(color = labels, size= 10, line=dict(color= 'black',width = 10)))
 layout = go.Layout(margin=dict(l=0,r=0),scene = Scene,height = 800,width = 800)
 data = [trace]
